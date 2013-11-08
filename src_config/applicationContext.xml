@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+	<bean id="applicationContextHolder" class="org.demo.util.ApplicationContextHolder" singleton="true"></bean>
+
+	<bean id="configBean"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="fileEncoding" value="UTF-8" />
+		<property name="locations">
+			<list>
+				<value>classpath*:conf/dataSource.properties</value>
+				<value>classpath*:conf/system.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="${fileUpload.maxSize}" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+	<!--
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="load*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="remove*" propagation="REQUIRED"/>
+            <tx:method name="insert*" propagation="REQUIRED"/>     
+            <tx:method name="getRemove*" propagation="SUPPORTS"/>
+            <tx:method name="getProcess*" propagation="SUPPORTS"/>    
+			<tx:method name="*" propagation="REQUIRED" rollback-for="HibernateException"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut id="serviceMethods" expression="execution(* org.demo.manager.*.*(..))" />
+		<aop:advisor pointcut-ref="serviceMethods" advice-ref="txAdvice" />
+	</aop:config>
+	
+	-->
+	<!-- 定义语言管理器 -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+</beans>

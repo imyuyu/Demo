@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="memberPluginDefintion" class="org.demo.plugin.member.MemberPluginDefintion">
+		<property name="id" value="memberPluginDefintion" />
+		<property name="name" value="人员管理插件" />
+		<property name="contextConfigLocation" >
+		<list>
+		  <value>classpath*:org/demo/plugin/member/member-controller.xml</value>
+		  <value>classpath*:org/demo/plugin/member/member-manager.xml</value>
+		</list>        
+		</property>
+		<property name="properties">
+		  <list>
+		    <value>classpath*:conf/member.properties</value>
+		  </list>
+		</property>
+		<property name="hbmResources">
+			<list>
+				<value>org/demo/plugin/member/domain/mapping/User.hbm.xml</value>
+			</list>
+		</property>
+		<property name="urlMapping" >
+          <props>
+          	<prop key="/member.do">memberController</prop>
+          </props>
+		</property>
+		
+		<property name="pluginInitializtion" value="org.demo.plugin.member.MemberPluginInitializtion" /> 
+	</bean>
+</beans>

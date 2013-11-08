@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee web-jsptaglibrary_2_1.xsd">
+ <!-- 配置taglib的一些信息 -->
+ <tlib-version>1.1</tlib-version>
+ <short-name>dee</short-name>
+ <uri>http://dee.demo.com/taglib/core</uri>
+ <display-name>Dee taglib core</display-name>
+ <description>Demo Taglib 1.0 Core Library</description>
+ <!-- 配置tag的地方 -->
+ <tag>
+ 	<function>
+		<name><!-- tag名字 --></name>
+		<function-class><!-- tag执行方法所在类 --></function-class>
+		<function-signature><!-- tag执行方法，包括返回类型，参数，如java.lang.String get(java.lang.String) --></function-signature>
+		<example><!-- 调用示例，如 <![CDATA[${v3x:getOrgAccountPhone(accountId)}]]> --></example>
+	</function>	
+ </tag>
+</taglib>

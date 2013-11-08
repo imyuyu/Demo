@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="userDao" class="org.demo.plugin.member.dao.UserDaoImpl">
+    </bean>
+    
+	<bean id="userManager" parent="baseTxService">
+		<property name="target">
+			<bean class="org.demo.plugin.member.manager.UserManagerImpl"/>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="Query*">PROPAGATION_SUPPORTS</prop>
+				<prop key="is*">PROPAGATION_SUPPORTS</prop>
+				<prop key="contain*">PROPAGATION_SUPPORTS</prop>
+				<prop key="init">PROPAGATION_SUPPORTS</prop>
+				<prop key="has*">PROPAGATION_SUPPORTS</prop>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

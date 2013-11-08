@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+	<bean id="urlMapping" class="org.demo.common.SimpleUrlHandlerMapping">
+		<property name="order">
+			<value>0</value>
+		</property>
+		<property name="interceptors">  
+            <list>  
+                <ref bean="openSessionInViewInterceptor" />  
+            </list>  
+        </property>  
+		<property name="mappings">
+			<props>
+				
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="openSessionInViewInterceptor" class="org.springframework.orm.hibernate4.support.OpenSessionInViewInterceptor">
+		<property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+</beans>

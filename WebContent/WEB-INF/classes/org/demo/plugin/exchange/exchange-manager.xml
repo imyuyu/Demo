@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="exchangeDao" class="org.demo.plugin.exchange.interfaces.dao.impl.ExchangeDaoImpl">
+    </bean>
+    
+	<bean id="exchangeManager" parent="baseTxService">
+		<property name="target">
+			<bean class="org.demo.plugin.exchange.interfaces.manager.impl.ExchangeManagerImpl"/>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="Query*">PROPAGATION_SUPPORTS</prop>
+				<prop key="is*">PROPAGATION_SUPPORTS</prop>
+				<prop key="contain*">PROPAGATION_SUPPORTS</prop>
+				<prop key="init">PROPAGATION_SUPPORTS</prop>
+				<prop key="has*">PROPAGATION_SUPPORTS</prop>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

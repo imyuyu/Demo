@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-autowire="byName">
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="${dataSource.driverClass}" />
+		<property name="jdbcUrl" value="${dataSource.jdbcUrl}" />
+		<property name="user" value="${dataSource.user}" />
+		<property name="password" value="${dataSource.password}" />
+		<property name="initialPoolSize" value="5" />
+		<property name="minPoolSize" value="5" />
+		<property name="maxPoolSize" value="20" />
+	</bean>
+	
+	<bean id="sessionFactory" class="org.demo.common.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="baseTxService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="proxyTargetClass" value="true" />
+
+		<property name="transactionAttributes">
+			<props>
+                <prop key="get*">PROPAGATION_SUPPORTS,readOnly</prop>
+                <prop key="find*">PROPAGATION_SUPPORTS,readOnly</prop>
+                <prop key="load*">PROPAGATION_SUPPORTS,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="remove*">PROPAGATION_REQUIRED</prop>
+                <prop key="insert*">PROPAGATION_REQUIRED</prop>                
+                <prop key="getRemove*">PROPAGATION_SUPPORTS</prop> 
+                <prop key="getProcess*">PROPAGATION_SUPPORTS</prop>              
+				<prop key="*">PROPAGATION_REQUIRED</prop>     
+			</props>
+		</property>
+	</bean>
+</beans>

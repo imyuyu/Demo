@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/repos/!svn/ver/1879/projects/lgc/trunk/src/WebContent/js-plugins/jqgrid/js
+END
+jquery-1.9.0.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/repos/!svn/ver/1879/projects/lgc/trunk/src/WebContent/js-plugins/jqgrid/js/jquery-1.9.0.min.js
+END
+jquery.jqGrid.src.js
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/repos/!svn/ver/1879/projects/lgc/trunk/src/WebContent/js-plugins/jqgrid/js/jquery.jqGrid.src.js
+END
+install.txt
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/repos/!svn/ver/1879/projects/lgc/trunk/src/WebContent/js-plugins/jqgrid/js/install.txt
+END
+Changes.txt
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/repos/!svn/ver/1879/projects/lgc/trunk/src/WebContent/js-plugins/jqgrid/js/Changes.txt
+END
+jquery.jqGrid.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/repos/!svn/ver/1879/projects/lgc/trunk/src/WebContent/js-plugins/jqgrid/js/jquery.jqGrid.min.js
+END
