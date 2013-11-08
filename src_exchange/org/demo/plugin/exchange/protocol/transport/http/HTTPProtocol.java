@@ -18,6 +18,11 @@ import sun.net.www.http.HttpClient;
 public class HTTPProtocol {
 	private final static Integer PORT=8080;
 	private final static String SERVLET_NAME = "exchangeServlet";
+	
+	/**
+	 * 发送
+	 * @param str
+	 */
 	public void send(String str){
 		URL url = null;
 		HttpURLConnection connection=null;
@@ -58,6 +63,11 @@ public class HTTPProtocol {
 		}
 	}
 	
+	/**
+	 * 执行服务
+	 * @param in
+	 * @param ou
+	 */
 	public void server(InputStream in,OutputStream ou){
 		System.out.println(toString(in,"UTF-8"));
 		try {
@@ -76,6 +86,12 @@ public class HTTPProtocol {
 		}
 	}
 	
+	/**
+	 * 将流按照指定的编码转为字符串
+	 * @param in
+	 * @param encoding
+	 * @return
+	 */
 	private String toString(InputStream in,String encoding){
 		ByteArrayOutputStream outStream = new ByteArrayOutputStream();  
 		  
@@ -100,6 +116,11 @@ public class HTTPProtocol {
 		return "";
 	}
 	
+	/**
+	 * 根据IP获取地址
+	 * @param ip
+	 * @return
+	 */
 	protected String getURL(String ip){
         StringBuilder builder = new StringBuilder();
         builder.append("HTTP://" + ip + ":"+PORT+"/Demos" + "/" +SERVLET_NAME);

@@ -111,6 +111,11 @@ public class ExchangeUtil {
 		return null;
 	}
 	
+	/**
+	 * 将字节数组转换成对象
+	 * @param b
+	 * @return
+	 */
 	public static Object readObjectByArray(byte[] b){
 		Object obj = null;
 		ObjectInputStream ois;
