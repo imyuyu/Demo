@@ -142,6 +142,7 @@ import java.util.StringTokenizer;
 	     * @param arg
 	     * @return
 	     */
+	    @Deprecated
 	    public static Date getDateValue(Map propertyMap, String arg) {
 	        Date value =null;
 	        /*String strDate = (String) propertyMap.get(arg);
@@ -205,6 +206,12 @@ import java.util.StringTokenizer;
 			}
 			return value;
 		}
+		/**
+		 * 将map转换为string
+		 * <pre>key 和value之间以'分割，每对键值对之间用^分割</pre>
+		 * @param map
+		 * @return
+		 */
 		public static String transMapToString(Map map){  
 			  java.util.Map.Entry entry;  
 			StringBuffer sb = new StringBuffer();  
@@ -216,6 +223,12 @@ import java.util.StringTokenizer;
 			  }  
 			 return sb.toString();  
 			}  
+		/**
+		 * 将字符串转为Map
+		 * <pre>key 和value之间以'分割，每对键值对之间用^分割</pre>
+		 * @param mapString
+		 * @return
+		 */
 		public static Map transStringToMap(String mapString){  
 			 Map map = new HashMap();  
 			 java.util.StringTokenizer items;  
