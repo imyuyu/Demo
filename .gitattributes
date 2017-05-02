@@ -20,3 +20,8 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+# j2ee 
+*.js linguist-language=java
+*.css linguist-language=java
+*.html linguist-language=java
